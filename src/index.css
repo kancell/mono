@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .login_other_account {
+    @apply flex w-10 h-10 mx-1 text-zero bg-6 bg-center bg-no-repeat bg-blue-middle bg-opacity-4 rounded-full;
+  }
+}

@@ -1,10 +1,19 @@
 import React from 'react';
+import {
+  BrowserRouter,
+  Route,
+} from 'react-router-dom';
+
 import Login from './views/login/Login';
 
 function App() {
   // const a:number = 1;
   return (
-    <Login />
+    <BrowserRouter>
+      <Route path="/login">
+        <Login />
+      </Route>
+    </BrowserRouter>
   );
 }
 
