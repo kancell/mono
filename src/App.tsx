@@ -8,20 +8,22 @@ import {
 import Login from './views/login/Login';
 import HomePage from './views/index/HomePage';
 
-function App() {
-  // const a:number = 1;
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
-        <Route path="/">
-          <HomePage />
-        </Route>
-      </Switch>
-    </BrowserRouter>
-  );
-}
+const App: React.FC<{}> = () => (
+  React.useMemo(
+    () => (
+      <BrowserRouter>
+        <Switch>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    ), [],
+  )
+);
+App.defaultProps = {};
 
 export default App;

@@ -1,14 +1,14 @@
 import { type } from 'os';
 import React from 'react';
 
-export type ButtonType = 'primary' | 'pure' |'text' | 'link';
-export type ButtonSize = 'large' | 'middle' | 'small' | 'custom';
-export type ButtonShape = 'rectangle' | 'roundedRectangle' |'circle'
+export type InputType = 'primary' | 'pure' |'text' | 'link';
+export type InputSize = 'large' | 'middle' | 'small' | 'custom';
+export type InputShape = 'rectangle' | 'roundedRectangle' |'circle'
 
-export interface ButtonProps {
-  type?: ButtonType,
-  size?: ButtonSize,
-  shpae?: ButtonShape,
+export interface InputProps {
+  type?: InputType,
+  size?: InputSize,
+  shpae?: InputShape,
   loading?: boolean,
   disabled?: boolean
   htmlType?: string,
