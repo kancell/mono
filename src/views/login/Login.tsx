@@ -10,7 +10,7 @@ import iconWeibo from 'assets/icon/icon-weibo.svg';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-function Login() {
+const Login: React.FC<{}> = () => {
   const match = useRouteMatch();
   // const a:number = 1;
   return (
@@ -53,6 +53,6 @@ function Login() {
       </header>
     </div>
   );
-}
+};
 
 export default Login;
