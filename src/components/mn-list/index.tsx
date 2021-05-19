@@ -38,15 +38,19 @@ export const ClassObject = {
 };
 
 const proxy = new Proxy(ClassObject, {
-  get(target) {
-    if (Array.isArray(target)) {
-      return target.join(' ');
-    }
-    return target;
+  get(target, prop, rec) {
+    const result = Reflect.get(target, prop, rec);
+    console.log(target);
+    console.log(prop);
+    console.log(result);
+    return result;
   },
 });
+const a = proxy(['type', 'primary']);
+console.log({}.toString.call(a));
 
-console.log(proxy.type);
+const b = a.;
+console.log(b);
 
 const MnList: React.FC<ListProps> = ({ children, type = 'primary', size = 'middle', shape }: ListProps) => {
   const MnListClassName = `
