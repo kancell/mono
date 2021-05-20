@@ -6,7 +6,7 @@ const Article: React.FC<{}> = () => {
   return (
     React.useMemo(
       () => (
-        <div>
+        <div className="w-full h-full flex content-center items-center flex-col">
           <MnList type="primary" size="large">
             <div>{a}</div>
           </MnList>
