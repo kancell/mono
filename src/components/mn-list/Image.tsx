@@ -12,23 +12,23 @@ export interface ImgProps {
   width?:string
 }
 // <div style={{ backgroundImage: `url(${src})` }} className={ImgClassName} />
+// <img className={ImgClassName} src={src} alt=" " />
 export const ImgClass = new Map([
   ['position', new Map([
     ['left', ['order-first']],
     ['right', ['order-last']],
   ])],
   ['size', new Map([
-    ['small', ['w-32', 'h-full']],
-    ['middle', ['w-48', 'h-full']],
-    ['large', ['w-64', 'h-full']],
-    ['auto', ['w-auto', 'h-auto']],
+    ['small', ['w-32']],
+    ['middle', ['w-48']],
+    ['large', ['w-64']],
   ])],
 ]);
 
 const proxy = listen(ImgClass);
 
 const MnListImage: React.FC<ImgProps> = ({ position = 'left', size = 'middle', className, src }: ImgProps) => {
-  const ImgClassName = `flex bg-cover ${proxy.position[position]} ${proxy.size[size]} ${className === undefined ? '' : className}`;
+  const ImgClassName = `bg-cover ${proxy.position[position]} ${proxy.size[size]} ${className === undefined ? '' : className}`;
 
   return (
     <div style={{ backgroundImage: `url(${src})` }} className={ImgClassName} />

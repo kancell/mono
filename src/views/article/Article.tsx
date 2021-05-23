@@ -11,12 +11,12 @@ const Article: React.FC<{}> = () => {
         <div>
           <MnList
             type="primary"
-            size="middle"
+            size="auto"
             shape="rectangle"
             title={<a href="item.href">从零开始，构建tailwind风格组件库</a>}
             content="Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers."
           >
-            <MnList.Image src={`${background}`} size="large" />
+            <MnList.Image src={`${background}`} size="middle" />
           </MnList>
           <MnList type="primary" size="auto" title="Finding customers for your new business" content="00000000000000000000000000000000000000000Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers." tag="dosometing" />
           <MnList type="primary" size="auto" content="Finding customers for your new business" title="Finding customers" />
