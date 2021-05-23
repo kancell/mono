@@ -5,6 +5,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import Blog from 'views/blog/Blog';
 import Login from './views/login/Login';
 import HomePage from './views/index/HomePage';
 
@@ -15,6 +16,9 @@ const App: React.FC<{}> = () => (
         <Switch>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/a">
+            <Blog />
           </Route>
           <Route path="/">
             <HomePage />

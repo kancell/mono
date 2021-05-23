@@ -9,7 +9,7 @@ function HomePage() {
   return (
     <div className="flex overflow-x-hidden">
       <div
-        className={`${FullPageStage ? 'w-0 sm:w-36 lg:w-96' : 'w-screen'}  h-screen flex justify-center flex-col items-center bg-cover bg-bottom transition-all`}
+        className={`${FullPageStage ? 'w-0 sm:w-36 lg:w-96' : 'w-screen'}  h-screen flex justify-center flex-col items-center bg-cover bg-bottom transition-all fixed`}
         style={{ backgroundImage: `url(${background})` }}
       >
         <div
@@ -27,7 +27,7 @@ function HomePage() {
           </div>
         </Link>
       </div>
-      <div className={`${FullPageStage ? 'flex-grow' : 'w-0'}  h-screen flex justify-center flex-col items-center bg-gray-100`}>
+      <div className={`${FullPageStage ? 'flex-1' : 'w-0'} flex justify-center flex-col items-center bg-gray-100 w-0 sm:ml-36 lg:ml-96`}>
         <Article />
       </div>
     </div>
