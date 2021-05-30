@@ -8,7 +8,7 @@ const Article: React.FC<{}> = () => {
   return (
     React.useMemo(
       () => (
-        <div>
+        <div className="mt-4 w-full">
           <MnList
             type="primary"
             size="auto"
@@ -18,18 +18,8 @@ const Article: React.FC<{}> = () => {
           >
             <MnList.Image src={`${background}`} size="middle" />
           </MnList>
-          <MnList type="primary" size="auto" title="Finding customers for your new business" content="00000000000000000000000000000000000000000Getting a new business off the ground is a lot of hard work. Here are five ideas you can use to find your first customers." tag="dosometing" />
-          <MnList type="primary" size="auto" content="Finding customers for your new business" title="Finding customers" />
-          <MnList type="primary" size="auto" content="Finding customers for your new business" title="Finding customers" />
-          <MnList type="primary" size="auto" content="Finding customers for your new business" title="Finding customers" />
-          <MnList type="primary" size="auto" content="Finding customers for your new business" title="Finding customers" />
-          <MnList type="primary" size="auto" content="Finding customers for your new business" title="Finding customers" />
-          <MnList type="primary" size="auto" content="Finding customers for your new business" title="Finding customers" />
-          <MnList type="primary" size="large" shape="circle" className="h-96">
-            <MnList.Image src={`${background}`} position="right" />
-          </MnList>
-          <MnList type="pure" size="small" shape="circle">
-            {a}
+          <MnList type="primary" size="middle" shape="rectangle" tag="doing" title={<h2 className="text-gray-100">sadassd</h2>}>
+            <MnList.Image src={`${background}`} position="right" className="m-2" />
           </MnList>
         </div>
       ), [],

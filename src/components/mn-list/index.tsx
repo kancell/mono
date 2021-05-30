@@ -12,9 +12,9 @@ export interface ListProps {
   type?: ListType,
   size?: ListSize,
   shape?: ListShape,
-  tag?: string,
+  tag?: string | React.ReactElement,
   title?: string | React.ReactElement,
-  content?: string,
+  content?: string | React.ReactElement,
   className?: string,
 }
 
@@ -49,9 +49,6 @@ function MnList({ type = 'pure', size = 'auto', shape = 'roundedRectangle', tag,
         <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{tag}</div>
         <div className="mt-1 text-lg leading-tight font-medium text-black hover:underline text-2xl text-gray-600">{title}</div>
         <div className="mt-2 text-gray-500 text-sm">{content}</div>
-        <div>123</div>
-        <div>123</div>
-        <div>123</div>
       </div>
 
     </div>
