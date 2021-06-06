@@ -18,7 +18,7 @@ const Article: React.FC<{}> = () => {
           >
             <MnList.Image src={`${background}`} size="middle" />
           </MnList>
-          <MnList type="primary" size="middle" shape="rectangle" tag="doing" title={<h2 className="text-gray-100">sadassd</h2>}>
+          <MnList type="primary" size="middle" shape="rectangle" tag="doing" title={<h2 className="text-gray-100">sadassd</h2>} className="">
             <MnList.Image src={`${background}`} position="right" className="m-2" />
           </MnList>
         </div>

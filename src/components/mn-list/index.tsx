@@ -1,5 +1,5 @@
 import * as React from 'react';
-import listen from 'components/base/index';
+import { outputClassName } from 'components/base/index';
 
 import MnListImage from 'components/mn-list/Image';
 
@@ -19,31 +19,36 @@ export interface ListProps {
 }
 
 export const ListClass = new Map([
-  ['type', new Map([
+  ['ListType', new Map([
     ['primary', ['mx-auto', 'bg-white', 'shadow-sm']],
     ['pure', ['mx-auto', 'bg-white', 'shadow-sm']],
     ['text', ['mx-auto', 'bg-white', 'shadow-sm']],
   ])],
-  ['size', new Map([
+  ['ListSize', new Map([
     ['large', ['w-10/12', 'm-2', 'h-64']],
     ['middle', ['w-10/12', 'm-2', 'h-48']],
     ['small', ['w-10/12', 'm-2', 'h-32']],
     ['auto', ['w-10/12', 'm-2']],
   ])],
-  ['shape', new Map([
+  ['ListShape', new Map([
     ['rectangle', ['rounded-none']],
     ['roundedRectangle', ['rounded-xl']],
     ['circle', ['rounded-full']],
   ])],
 ]);
 
-const proxy = listen(ListClass);
+// const proxy = listen(ListClass);
 
 function MnList({ type = 'pure', size = 'auto', shape = 'roundedRectangle', tag, title, content, className, children }: ListProps) {
-  const MnListClassName = `flex overflow-hidden ${proxy.type[type]} ${proxy.size[size]} ${proxy.shape[shape]} ${className === undefined ? '' : className}`;
+  const MnListClassName = outputClassName(ListClass,
+    className,
+    { ListType: type },
+    { ListSize: size },
 
+    { ListShape: shape });
+  const BaseClassName = `flex overflow-hidden ${MnListClassName}`;
   return (
-    <div className={MnListClassName}>
+    <div className={BaseClassName}>
       {children}
       <div className="p-8 flex-grow">
         <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{tag}</div>

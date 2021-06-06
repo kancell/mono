@@ -1,5 +1,5 @@
 import React from 'react';
-import listen from 'components/base/index';
+import { listen } from 'components/base/index';
 
 export type ImgPosition = 'left' | 'right';
 export type ImgSize = 'small' | 'middle' | 'large' | 'auto';
