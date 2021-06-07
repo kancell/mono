@@ -1,4 +1,3 @@
-import { type } from 'os';
 import React from 'react';
 
 export type InputType = 'primary' | 'pure' |'text' | 'link';
@@ -16,7 +15,11 @@ export interface InputProps {
 }
 function MnInput() {
   return (
-    <div>1</div>
+    <div>
+      <div className="flex w-16 h-16">1</div>
+      <div className="flex w-16 h-16">1</div>
+      <div className="flex w-16 h-16">1</div>
+    </div>
   );
 }
 

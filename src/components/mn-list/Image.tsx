@@ -1,5 +1,5 @@
 import React from 'react';
-import { listen } from 'components/base/index';
+import { outputClassName } from 'components/base/index';
 
 export type ImgPosition = 'left' | 'right';
 export type ImgSize = 'small' | 'middle' | 'large' | 'auto';
@@ -13,25 +13,38 @@ export interface ImgProps {
 }
 // <div style={{ backgroundImage: `url(${src})` }} className={ImgClassName} />
 // <img className={ImgClassName} src={src} alt=" " />
-export const ImgClass = new Map([
-  ['position', new Map([
+/* export const ImgClass = new Map([
+  ['imagePosition', new Map([
     ['left', ['order-first']],
     ['right', ['order-last']],
   ])],
-  ['size', new Map([
+  ['imageSize', new Map([
     ['small', ['w-32']],
     ['middle', ['w-48']],
     ['large', ['w-64']],
   ])],
-]);
-
-const proxy = listen(ImgClass);
+]); */
+export const ImgClass:Object = {
+  imagePosition: {
+    left: ['order-first'],
+    right: ['order-last'],
+  },
+  imageSize: {
+    small: ['w-32'],
+    middle: ['w-64'],
+    large: ['w-64'],
+  },
+};
 
 const MnListImage: React.FC<ImgProps> = ({ position = 'left', size = 'middle', className, src }: ImgProps) => {
-  const ImgClassName = `bg-cover ${proxy.position[position]} ${proxy.size[size]} ${className === undefined ? '' : className}`;
+  const ImgClassName = outputClassName(ImgClass,
+    className,
+    { imagePosition: position },
+    { imageSize: size });
+  const BaseClassName = `bg-cover ${ImgClassName}`;
 
   return (
-    <div style={{ backgroundImage: `url(${src})` }} className={ImgClassName} />
+    <div style={{ backgroundImage: `url(${src})` }} className={BaseClassName} />
   );
 };
 

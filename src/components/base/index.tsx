@@ -13,30 +13,35 @@ function listen(params:Map<string, any>):any {
   return new Proxy(params, handler);
 }
 
-function outputClassName(ClassMap:Map<string, Map<string, string[]>>, className?:string, ...args: Object[]):string {
-  const result :string[] = [];
+function classNames(classObject:string): string {
+  let resultstr:string = '';
+  Object.entries(classObject).forEach((item) => {
+    if (item[1] as unknown as boolean === true) {
+      resultstr += ` ${item[0]}`;
+    }
+  });
+  return resultstr;
+}
+
+function outputClassName(classContain:any, className?:string, ...args: Object[]):string {
+  const classResult:any = {};
   args.forEach((item) => {
     const classKey:string = Object.entries(item)[0][0];
     const classValue:string = Object.entries(item)[0][1];
-    ClassMap.get(classKey)?.get(classValue)?.forEach((classItem) => {
-      let classResult:string = '';
+    classContain[classKey][classValue].forEach((classItem:string) => {
+      classResult[classItem] = true;
       if (className !== undefined) {
-        const classNameReg = className.match(/^.*?(?=-)/g) === null ? null : className.match(/^.*?(?=-)/g) as string[];
-        if (classNameReg === null) {
-          if (classItem.indexOf(className) !== -1) {
-            classResult = className;
+        className.split(' ').forEach((customItem) => {
+          classResult[customItem] = true;
+          const customItemReg = customItem.match(/^.*?(?=-)/g) === null ? [customItem] : customItem.match(/^.*?(?=-)/g) as string[];
+          if (classItem.indexOf(customItemReg[0]) === 0) {
+            classResult[classItem] = false;
           }
-        } else if (classItem.indexOf(classNameReg[0]) === 0) {
-          classResult = className;
-        }
+        });
       }
-      if (classResult === '') {
-        classResult = classItem;
-      }
-      result.push(classResult);
     });
   });
-  return result.join(' ');
+  return classNames(classResult);
 }
-// 还需要将classname切割成数组，并需要优化时间复杂度
+// 还需要优化时间复杂度
 export { listen, outputClassName };

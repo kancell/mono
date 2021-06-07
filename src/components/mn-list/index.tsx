@@ -18,44 +18,45 @@ export interface ListProps {
   className?: string,
 }
 
-export const ListClass = new Map([
-  ['ListType', new Map([
-    ['primary', ['mx-auto', 'bg-white', 'shadow-sm']],
-    ['pure', ['mx-auto', 'bg-white', 'shadow-sm']],
-    ['text', ['mx-auto', 'bg-white', 'shadow-sm']],
-  ])],
-  ['ListSize', new Map([
-    ['large', ['w-10/12', 'm-2', 'h-64']],
-    ['middle', ['w-10/12', 'm-2', 'h-48']],
-    ['small', ['w-10/12', 'm-2', 'h-32']],
-    ['auto', ['w-10/12', 'm-2']],
-  ])],
-  ['ListShape', new Map([
-    ['rectangle', ['rounded-none']],
-    ['roundedRectangle', ['rounded-xl']],
-    ['circle', ['rounded-full']],
-  ])],
-]);
-
-// const proxy = listen(ListClass);
+export const ListClass = {
+  ListType: {
+    primary: ['bg-white', 'shadow-sm'],
+    pure: ['bg-white', 'shadow-sm'],
+    text: ['bg-white', 'shadow-sm'],
+  },
+  ListSize: {
+    large: ['w-10/12', 'm-2', 'h-64'],
+    middle: ['w-10/12', 'm-2', 'h-48'],
+    small: ['w-10/12', 'm-2', 'h-32'],
+    auto: ['w-10/12', 'm-2'],
+  },
+  ListShape: {
+    rectangle: ['rounded-none'],
+    roundedRectangle: ['rounded-lg'],
+    circle: ['rounded-full'],
+  },
+  children: {
+    tag: 'uppercase tracking-wide text-sm text-indigo-500 font-semibold',
+    title: 'mt-1 text-lg leading-tight font-medium text-black hover:underline text-2xl text-gray-600',
+    content: 'mt-2 text-gray-500 text-sm',
+  },
+};
 
 function MnList({ type = 'pure', size = 'auto', shape = 'roundedRectangle', tag, title, content, className, children }: ListProps) {
   const MnListClassName = outputClassName(ListClass,
     className,
     { ListType: type },
     { ListSize: size },
-
     { ListShape: shape });
-  const BaseClassName = `flex overflow-hidden ${MnListClassName}`;
+  const BaseClassName = `flex overflow-hidden border-gray-200 shadow ${MnListClassName}`;
   return (
     <div className={BaseClassName}>
       {children}
       <div className="p-8 flex-grow">
-        <div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{tag}</div>
-        <div className="mt-1 text-lg leading-tight font-medium text-black hover:underline text-2xl text-gray-600">{title}</div>
-        <div className="mt-2 text-gray-500 text-sm">{content}</div>
+        <div className={typeof tag === 'string' ? ListClass.children.tag : ''}>{tag}</div>
+        <div className={typeof title === 'string' ? ListClass.children.title : ''}>{title}</div>
+        <div className={typeof content === 'string' ? ListClass.children.content : ''}>{content}</div>
       </div>
-
     </div>
   );
 }
