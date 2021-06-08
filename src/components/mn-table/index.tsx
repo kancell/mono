@@ -7,10 +7,10 @@ export interface TableProps {
   colums: {
     title?:string,
     key?:string,
-    dataIndex?:string,
+    dataIndex:string,
     render?:React.ReactElement
   } [],
-  dataSource: {[key: string]: string} [],
+  dataSource: {[key: string]: string | {[key:string]: string}} [],
   type?: TableType,
   size?: TableSize,
 }
@@ -34,27 +34,27 @@ function MnTable({ colums, dataSource }: TableProps) {
                       </th>
                     ))
                   }
-                  {/* <th scope="col" className="relative px-6 py-3">
+                  <th scope="col" className="relative px-6 py-3">
                     <span className="sr-only">Edit</span>
-                  </th> */}
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {dataSource.map((item) => (
-                  <tr key={item.email}>
+                {dataSource.map((item: {[key: string]: string | {[key: string]: string}}, index) => (
+                  <tr key="{item}">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
                         <div className="flex-shrink-0 h-10 w-10">
-                          <img className="h-10 w-10 rounded-full" src={item.image} alt="" />
+                          {/* <img className="h-10 w-10 rounded-full" src={item.image} alt="" /> */}
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{item.name}</div>
+                          <div className="text-sm font-medium text-gray-900">{item[colums[index].dataIndex].text}</div>
                           <div className="text-sm text-gray-500">{item.email}</div>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{item.title}</div>
+                      <div className="text-sm text-gray-900">{item.department}</div>
                       <div className="text-sm text-gray-500">{item.department}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

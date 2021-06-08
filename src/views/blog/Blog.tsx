@@ -11,7 +11,7 @@ const colums = [
   {
     title: 'Title',
     key: 'title',
-    dataIndex: 'titel',
+    dataIndex: 'title',
   },
   {
     title: 'Status',
@@ -26,11 +26,9 @@ const colums = [
 ];
 const people = [
   {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
+    name: { text: 'Jane Cooper', subText: 'jane.cooper@example.com' },
+    title: { text: 'Regional Paradigm Technician', subText: 'Optimization' },
     role: 'Admin',
-    email: 'jane.cooper@example.com',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
   },
 ];

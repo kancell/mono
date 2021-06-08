@@ -26,6 +26,13 @@ function HomePage() {
             LOGIN
           </div>
         </Link>
+        <Link to="b">
+          <div
+            className="w-24 h-10 my-1 text-white flex justify-center transition-colors items-center border rounded cursor-pointer hover:bg-white hover:text-gray-500"
+          >
+            TABLE
+          </div>
+        </Link>
       </div>
       <div className={`${FullPageStage ? 'flex-1' : 'w-0 h-0'} flex justify-center flex-col items-center bg-gray-100 w-0 sm:ml-36 lg:ml-96`}>
         <Article />
