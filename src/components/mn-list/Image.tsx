@@ -24,7 +24,7 @@ export interface ImgProps {
     ['large', ['w-64']],
   ])],
 ]); */
-export const ImgClass:Object = {
+export const ImgClass = {
   imagePosition: {
     left: ['order-first'],
     right: ['order-last'],

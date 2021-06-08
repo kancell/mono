@@ -8,7 +8,7 @@ export type ListSize = 'large' | 'middle' | 'small' | 'auto' |'custom';
 export type ListShape = 'rectangle' | 'roundedRectangle' |'circle'
 
 export interface ListProps {
-  children?: any,
+  children?: React.ReactElement,
   type?: ListType,
   size?: ListSize,
   shape?: ListShape,
@@ -36,9 +36,9 @@ export const ListClass = {
     circle: ['rounded-full'],
   },
   children: {
-    tag: 'uppercase tracking-wide text-sm text-indigo-500 font-semibold',
-    title: 'mt-1 text-lg leading-tight font-medium text-black hover:underline text-2xl text-gray-600',
-    content: 'mt-2 text-gray-500 text-sm',
+    tag: ['uppercase tracking-wide text-sm text-indigo-500 font-semibold'],
+    title: ['mt-1 text-lg leading-tight font-medium text-black hover:underline text-2xl text-gray-600'],
+    content: ['mt-2 text-gray-500 text-sm'],
   },
 };
 
@@ -53,9 +53,9 @@ function MnList({ type = 'pure', size = 'auto', shape = 'roundedRectangle', tag,
     <div className={BaseClassName}>
       {children}
       <div className="p-8 flex-grow">
-        <div className={typeof tag === 'string' ? ListClass.children.tag : ''}>{tag}</div>
-        <div className={typeof title === 'string' ? ListClass.children.title : ''}>{title}</div>
-        <div className={typeof content === 'string' ? ListClass.children.content : ''}>{content}</div>
+        <div className={typeof tag === 'string' ? ListClass.children.tag[0] : ''}>{tag}</div>
+        <div className={typeof title === 'string' ? ListClass.children.title[0] : ''}>{title}</div>
+        <div className={typeof content === 'string' ? ListClass.children.content[0] : ''}>{content}</div>
       </div>
     </div>
   );

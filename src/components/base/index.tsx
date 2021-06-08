@@ -13,18 +13,18 @@ function listen(params:Map<string, any>):any {
   return new Proxy(params, handler);
 }
 
-function classNames(classObject:string): string {
+function classNames(classObject:{[key: string]: Boolean}): string {
   let resultstr:string = '';
   Object.entries(classObject).forEach((item) => {
-    if (item[1] as unknown as boolean === true) {
+    if (item[1] === true) {
       resultstr += ` ${item[0]}`;
     }
   });
   return resultstr;
 }
 
-function outputClassName(classContain:any, className?:string, ...args: Object[]):string {
-  const classResult:any = {};
+function outputClassName(classContain:{[key: string]: {[key: string]: string[]}}, className?:string, ...args: Object[]):string {
+  const classResult:{[key:string]:Boolean} = {};
   args.forEach((item) => {
     const classKey:string = Object.entries(item)[0][0];
     const classValue:string = Object.entries(item)[0][1];

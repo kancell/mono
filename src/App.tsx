@@ -17,7 +17,7 @@ const App: React.FC<{}> = () => (
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/a">
+          <Route path="/b">
             <Blog />
           </Route>
           <Route path="/">

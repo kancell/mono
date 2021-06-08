@@ -43,7 +43,8 @@ const Article: React.FC<{}> = () => {
               <MnList.Image src={`${background}`} />
             </MnList>
             <MnList
-              title="无图片"
+              title="无图片测试"
+              tag="无图片"
               type="primary"
               className="w-96 h-48"
             />
