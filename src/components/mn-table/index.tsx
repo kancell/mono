@@ -40,7 +40,7 @@ function MnTable({ colums, dataSource }: TableProps) {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {dataSource.map((item: {[key: string]: string | {[key: string]: string}}, index) => (
+                {dataSource.map((rowItem: {[key: string]: string | {[key: string]: string}}, index) => (
                   <tr key="{item}">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
@@ -48,21 +48,33 @@ function MnTable({ colums, dataSource }: TableProps) {
                           {/* <img className="h-10 w-10 rounded-full" src={item.image} alt="" /> */}
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">{item[colums[index].dataIndex].text}</div>
-                          <div className="text-sm text-gray-500">{item.email}</div>
+                          {typeof rowItem[colums[index].dataIndex] === 'string'
+                            ? <div className="text-sm font-medium text-gray-900">{rowItem[colums[index].dataIndex]}</div>
+                            : (
+                              <>
+                                <div className="text-sm font-medium text-gray-900">{(rowItem[colums[index].dataIndex] as {text: string}).text}</div>
+                                <div className="text-sm text-gray-500">{(rowItem[colums[index].dataIndex] as {subText: string}).subText}</div>
+                              </>
+                            )}
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{item.department}</div>
-                      <div className="text-sm text-gray-500">{item.department}</div>
+                      {typeof rowItem[colums[index].dataIndex] === 'string'
+                        ? <div className="text-sm font-medium text-gray-900">{rowItem[colums[index].dataIndex]}</div>
+                        : (
+                          <>
+                            <div className="text-sm font-medium text-gray-900">{(rowItem[colums[index].dataIndex] as {text: string}).text}</div>
+                            <div className="text-sm text-gray-500">{(rowItem[colums[index].dataIndex] as {subText: string}).subText}</div>
+                          </>
+                        )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                         Active
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.role}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{rowItem.role}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="123" className="text-indigo-600 hover:text-indigo-900">
                         Edit
