@@ -26,15 +26,17 @@ const colums = [
 ];
 const people = [
   {
-    name: 'Jane Cooper阿三大苏打',
+    name: 'Jane Cooper',
     title: { text: 'Regional Paradigm Technician', subText: 'Optimization' },
-    role: 'Admin',
+    role: { text: 'Admin', subText: 'custom' },
+    status: 'dodo',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
   },
   {
-    name: 'Jane Cooper阿三大苏打',
+    name: { text: 'Regional Paradigm Technician', subText: 'Optimization' },
     title: 'Regional Paradigm Technician阿斯顿萨达',
     role: 'Admin',
+
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
   },
 ];

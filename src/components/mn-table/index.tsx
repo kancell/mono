@@ -10,12 +10,37 @@ export interface TableProps {
     dataIndex:string,
     render?:React.ReactElement
   } [],
-  dataSource: {[key: string]: string | {[key:string]: string}} [],
+  dataSource: {[key: string]: string | {[key:string]: string} | undefined} [],
   type?: TableType,
   size?: TableSize,
 }
 
 function MnTable({ colums, dataSource }: TableProps) {
+  const cellValueHandle = (rowItem: {[key: string]: string | {[key: string]: string} | undefined}, index: number) => (
+    <tr key={colums[index].dataIndex}>
+      {
+        colums.map((item) => (
+          <td className="px-6 py-4 whitespace-nowrap">
+            {typeof rowItem[item.dataIndex] === 'undefined'
+              ? <div className="text-sm font-medium text-gray-900" />
+              : (
+                <>
+                  {typeof rowItem[item.dataIndex] === 'string' && <div className="text-sm font-medium text-gray-900">{rowItem[item.dataIndex]}</div>}
+                  {typeof rowItem[item.dataIndex] === 'object'
+                  && (
+                  <>
+                    <div className="text-sm font-medium text-gray-900">{(rowItem[item.dataIndex] as {text: string}).text}</div>
+                    <div className="text-sm text-gray-500">{(rowItem[item.dataIndex] as {subText: string}).subText}</div>
+                  </>
+                  )}
+                </>
+              )}
+          </td>
+        ))
+      }
+    </tr>
+  );
+
   return (
     <div className="flex flex-col">
       <div className="overflow-x-auto">
@@ -43,24 +68,7 @@ function MnTable({ colums, dataSource }: TableProps) {
               <tbody className="bg-white divide-y divide-gray-200">
                 {
                   dataSource.map((rowItem, index) => (
-                    <tr key={colums[index].dataIndex}>
-                      {
-                        colums.map((item) => (
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            {typeof rowItem[item.dataIndex] === 'string'
-                              ? <div className="text-sm font-medium text-gray-900">{rowItem[item.dataIndex]}</div>
-                              : (
-                                <>
-                                  {/* undefined处理 */}
-                                  {console.log(rowItem[item.dataIndex])}
-                                  <div className="text-sm font-medium text-gray-900">{(rowItem[item.dataIndex] as {text: string}).text}</div>
-                                  <div className="text-sm font-medium text-gray-900">{(rowItem[item.dataIndex] as {subText: string}).subText}</div>
-                                </>
-                              )}
-                          </td>
-                        ))
-                      }
-                    </tr>
+                    cellValueHandle(rowItem, index)
                   ))
                 }
               </tbody>
