@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Article from 'views/article/Article';
 import background from 'assets/background.jpg';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 function HomePage() {
   const [FullPageStage, setFullPageStage] = useState(false);
@@ -19,7 +19,7 @@ function HomePage() {
         >
           RECORD
         </div>
-        <Link to="login">
+        {/* <Link to="login">
           <div
             className="w-24 h-10 my-1 text-white flex justify-center transition-colors items-center border rounded cursor-pointer hover:bg-white hover:text-gray-500"
           >
@@ -32,7 +32,7 @@ function HomePage() {
           >
             TABLE
           </div>
-        </Link>
+        </Link> */}
       </div>
       <div className={`${FullPageStage ? 'flex-1' : 'w-0 h-0'} flex justify-center flex-col items-center bg-gray-100 w-0 sm:ml-36 lg:ml-96`}>
         <Article />

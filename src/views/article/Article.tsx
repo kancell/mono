@@ -1,16 +1,40 @@
+/* eslint-disable */
 import * as React from 'react';
-import MnList from 'components/mn-list/index';
-import background from 'assets/background.jpg';
-import { Link } from 'react-router-dom';
+// import MnList from 'components/mn-list/index';
+// import background from 'assets/background.jpg';
+// import { Link } from 'react-router-dom';
+import flvjs from 'flv.js';
+import DPlayer from 'dplayer';
+
 
 const Article: React.FC<{}> = () => {
-  const a = 1;
-  console.log(a);
+  React.useEffect(() => {
+    const dp = new DPlayer({
+      container: document.getElementById('dplayer'),
+      video: {
+        url: 'http://183.94.33.195:8082/flv?port=1935&app=tv_file&stream=12345',
+        type: 'flv',
+        pluginOptions: {
+        flv: {
+            // refer to https://github.com/bilibili/flv.js/blob/master/docs/api.md#flvjscreateplayer
+            mediaDataSource: {
+                // mediaDataSource config
+            },
+            config: {
+                // config
+            },
+        },
+        },
+      },
+    })
+  },[])
+
   return (
     React.useMemo(// w-full h-full flex content-center items-center flex-col
       () => (
         <div className="mt-4 w-full flex flex-col content-center items-center">
-          <MnList
+          <div id="dplayer"/>
+          {/* <MnList
             type="primary"
             size="middle"
             shape="roundedRectangle"
@@ -54,7 +78,7 @@ const Article: React.FC<{}> = () => {
               size="small"
               className="w-32"
             />
-          </div>
+          </div> */}
         </div>
       ), [],
     )
